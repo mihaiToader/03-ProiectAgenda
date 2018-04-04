@@ -81,6 +81,7 @@ public class AddContactTest {
             assertTrue(false);
         }
         assertTrue(rep.getContacts().size() == 4);
+        assertTrue(rep.getByName("John").getName().equals("John"));
     }
 
     @Test
@@ -141,6 +142,7 @@ public class AddContactTest {
             assertTrue(false);
         }
         assertTrue(rep.getContacts().size() == 4);
+        assertTrue(rep.getByName("John").getName().equals("John"));
     }
 
     //BVA 14
@@ -176,10 +178,10 @@ public class AddContactTest {
             con = new Contact("John", "Cluj-Napoca, jud. Cluj", "+40743435234");
             rep.addContact(con);
         } catch (InvalidFormatException e) {
-            assertTrue(true);
-            assertTrue(e.getCause().getMessage().contains("Invalid phone number"));
+            assertTrue(false);
         }
-        assertTrue(rep.getContacts().size() == 3);
+        assertTrue(rep.getContacts().size() == 4);
+        assertTrue(rep.getByName("").getName().equals("John"));
     }
 
     //BVA 16
