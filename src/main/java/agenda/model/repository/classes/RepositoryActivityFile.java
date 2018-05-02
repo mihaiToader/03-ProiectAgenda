@@ -49,6 +49,7 @@ public class RepositoryActivityFile implements RepositoryActivity{
 		return new LinkedList<Activity>(activities);
 	}
 
+
 	@Override
 	public boolean addActivity(Activity activity) {
 		int  i = 0;
@@ -111,9 +112,9 @@ public class RepositoryActivityFile implements RepositoryActivity{
 	public List<Activity> activitiesByName(String name) {
 		List<Activity> result1 = new LinkedList<Activity>();
 		for (Activity a : activities)
-			if (a.getName().equals(name) == false) result1.add(a);
+			if (a.getName().equals(name) == true) result1.add(a);
 		List<Activity> result = new LinkedList<Activity>();
-		while (result1.size() >= 0 )
+		while (result1.size() > 0 )
 		{
 			Activity ac = result1.get(0);
 			int index = 0;
