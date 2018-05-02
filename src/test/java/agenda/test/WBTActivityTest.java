@@ -36,4 +36,10 @@ public class WBTActivityTest {
     {
         assertEquals(0, rep.activitiesByName("invalid").size());
     }
+
+    @Test
+    public void testCase3()
+    {
+        assertEquals(1, rep.activitiesByName("name2").size());
+    }
 }
