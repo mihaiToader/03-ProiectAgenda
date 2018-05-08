@@ -22,8 +22,14 @@ public class WBTActivityTest {
 
 	@Before
 	public void setUp() throws Exception {
-		rep = new RepositoryActivityFile(new RepositoryContactFile());
-	}
+        rep = new RepositoryActivityMock();
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        rep.addActivity(new Activity("theName", df.parse("03/20/2013 12:00"),
+                df.parse("03/20/2013 13:00"), null, "Lunch break"));
+        rep.addActivity(new Activity("theName", df.parse("03/20/2013 20:00"),
+                df.parse("03/20/2013 21:00"), null, "Dinner"));
+
+    }
 
 	@Test
 	public void testCase1()
