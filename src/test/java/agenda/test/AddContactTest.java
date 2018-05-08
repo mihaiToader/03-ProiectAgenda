@@ -181,7 +181,7 @@ public class AddContactTest {
             assertTrue(false);
         }
         assertTrue(rep.getContacts().size() == 4);
-        assertTrue(rep.getByName("").getName().equals("John"));
+        assertTrue(rep.getByName("John").getName().equals("John"));
     }
 
     //BVA 16

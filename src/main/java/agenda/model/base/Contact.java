@@ -91,7 +91,7 @@ public class Contact {
 		if (tel.charAt(0) == '+' && s.length == 2 ) return true;
 		if (tel.charAt(0) != '0')return false;
 		if (s.length != 1) return false;
-		return true;
+		return tel.length() == 10;
 	}
 	
 		
