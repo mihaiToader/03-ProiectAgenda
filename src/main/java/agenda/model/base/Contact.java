@@ -74,11 +74,11 @@ public class Contact {
 	
 	private static boolean validName(String str)
 	{
-		
+
 		String[] s = str.split("[\\p{Punct}\\s]+");
 		if (s.length>2) return false;
-		return true;
-	}
+        return !str.isEmpty();
+    }
 	
 	private static boolean validAddress(String str)
 	{

@@ -123,7 +123,7 @@ public class AddContactTest {
     @Test
     public void testBB5() {
         try {
-            con = new Contact("", "Cluj-Napoca, jud. Cluj", "0743 435234");
+            con = new Contact("", "Cluj-Napoca, jud. Cluj", "0743435234");
             rep.addContact(con);
         } catch (InvalidFormatException e) {
             assertTrue(true);
