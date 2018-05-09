@@ -10,7 +10,9 @@ import java.util.List;
 import agenda.model.base.Activity;
 import agenda.model.base.Contact;
 import agenda.model.repository.classes.RepositoryActivityFile;
+import agenda.model.repository.classes.RepositoryActivityMock;
 import agenda.model.repository.classes.RepositoryContactFile;
+import agenda.model.repository.classes.RepositoryContactMock;
 import agenda.model.repository.interfaces.RepositoryActivity;
 import agenda.model.repository.interfaces.RepositoryContact;
 
@@ -22,9 +24,8 @@ public class AfisActivityTest {
 	RepositoryActivity rep;
 
 	@Before
-	public void setUp() throws Exception {
-		RepositoryContact repcon = new RepositoryContactFile();
-		rep = new RepositoryActivityFile(repcon);
+	public void setUp() {
+		rep = new RepositoryActivityMock();
 	}
 
 	@Test
