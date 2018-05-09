@@ -24,7 +24,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class IntegrationTestBB {
+public class IntegrationBBTest {
 
     private RepositoryActivity repAct;
     private RepositoryContact repCon;
