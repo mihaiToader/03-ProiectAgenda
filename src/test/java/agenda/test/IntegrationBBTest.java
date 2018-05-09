@@ -80,7 +80,7 @@ public class IntegrationBBTest {
         int n = mainController.count();
 
         try {
-            Contact c = new Contact("name", "address1", "+071122334455");
+            Contact c = new Contact("name", "address1", "0745874569");
             mainController.addContact(c);
         } catch (InvalidFormatException e) {
             e.printStackTrace();
