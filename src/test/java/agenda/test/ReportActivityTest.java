@@ -19,7 +19,7 @@ import agenda.model.repository.interfaces.RepositoryContact;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AfisActivityTest {
+public class ReportActivityTest {
 
 	RepositoryActivity rep;
 
