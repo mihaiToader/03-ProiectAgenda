@@ -56,6 +56,11 @@ public class RepositoryUserFile implements RepositoryUser{
 	}
 
 	@Override
+	public void add(User user) {
+
+	}
+
+	@Override
 	public boolean changePasswd(User user, String oldPasswd, String newPasswd) {
 		int index = users.indexOf(user);
 		if (index < 0) return false;

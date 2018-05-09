@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import agenda.controller.MainController;
 import agenda.exceptions.InvalidFormatException;
 
 import agenda.model.base.Activity;
@@ -19,6 +20,7 @@ import agenda.model.repository.classes.RepositoryUserFile;
 import agenda.model.repository.interfaces.RepositoryActivity;
 import agenda.model.repository.interfaces.RepositoryContact;
 import agenda.model.repository.interfaces.RepositoryUser;
+import sun.applet.Main;
 
 //functionalitati
 //i.	 adaugarea de contacte (nume, adresa, numar de telefon, adresa email);
@@ -34,6 +36,7 @@ public class MainClass {
 			RepositoryUser userRep = new RepositoryUserFile();
 			RepositoryActivity activityRep = new RepositoryActivityFile(
 					contactRep);
+			MainController mainController = new MainController(contactRep, userRep, activityRep);
 
 			User user = null;
 			in = new BufferedReader(new InputStreamReader(System.in));
@@ -43,7 +46,7 @@ public class MainClass {
 				System.out.printf("Enter password: ");
 				String p = in.readLine();
 
-				user = userRep.getByUsername(u);
+				user = mainController.getByUsername(u);
 				if (!user.isPassword(p))
 					user = null;
 			}
@@ -55,13 +58,13 @@ public class MainClass {
 				try {
 					switch (chosen) {
 					case 1:
-						adaugContact(contactRep, in);
+						adaugContact(mainController, in);
 						break;
 					case 2:
-						adaugActivitate(activityRep, contactRep, in, user);
+						adaugActivitate(mainController, in, user);
 						break;
 					case 3:
-						afisActivitate(activityRep, in, user);
+						afisActivitate(mainController, in, user);
 						break;
 					}
 				} catch (Exception e) {
@@ -79,7 +82,7 @@ public class MainClass {
 		System.out.println("Program over and out\n");
 	}
 
-	private static void afisActivitate(RepositoryActivity activityRep,
+	private static void afisActivitate(MainController mainController,
 			BufferedReader in, User user) {
 		try {
 			System.out.printf("Afisare Activitate: \n");
@@ -93,7 +96,7 @@ public class MainClass {
 
 			System.out.println("Activitatile din ziua " + d.toString() + ": ");
 
-			List<Activity> act = activityRep
+			List<Activity> act = mainController
 					.activitiesOnDate(user.getName(), d);
 			for (Activity a : act) {
 				System.out.printf("%s - %s: %s - %s with: ", a.getStart()
@@ -108,8 +111,7 @@ public class MainClass {
 		}
 	}
 
-	private static void adaugActivitate(RepositoryActivity activityRep,
-			RepositoryContact contactRep, BufferedReader in, User user) {
+	private static void adaugActivitate(MainController mainController, BufferedReader in, User user) {
 		try {
 			System.out.printf("Adauga Activitate: \n");
 			System.out.printf("Descriere: ");
@@ -141,7 +143,7 @@ public class MainClass {
 			Activity act = new Activity(user.getName(), start, end,
 					new LinkedList<Contact>(), description);
 
-			activityRep.addActivity(act);
+			mainController.addActivity(act);
 
 			System.out.printf("S-a adugat cu succes\n");
 		} catch (IOException e) {
@@ -150,7 +152,7 @@ public class MainClass {
 
 	}
 
-	private static void adaugContact(RepositoryContact contactRep,
+	private static void adaugContact(MainController mainController,
 			BufferedReader in) {
 
 		try {
@@ -164,7 +166,7 @@ public class MainClass {
 			
 			Contact c = new Contact(name, adress, telefon);
 
-			contactRep.addContact(c);
+			mainController.addContact(c);
 
 			System.out.printf("S-a adugat cu succes\n");
 		} catch (IOException e) {
@@ -175,6 +177,8 @@ public class MainClass {
 						.getCause().getMessage());
 			else
 				System.out.printf("Eroare: %s\n" + e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}

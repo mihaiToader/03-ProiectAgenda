@@ -8,7 +8,8 @@ public interface RepositoryUser {
 
 	User getByUsername(String username);
 	User getByName(String name);
-	
+	void  add(User user);
+
 	boolean changePasswd(User user, String oldPasswd, String newPasswd);
 	
 	boolean save();

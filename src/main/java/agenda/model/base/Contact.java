@@ -88,6 +88,8 @@ public class Contact {
 	private static boolean validTelefon(String tel)
 	{
 		String[] s = tel.split("[\\p{Punct}\\s]+");
+		if (tel.isEmpty()) return false;
+		if (tel.length() != 10) return false;
 		if (tel.charAt(0) == '+' && s.length == 2 ) return true;
 		if (tel.charAt(0) != '0')return false;
 		if (s.length != 1) return false;
